@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="webstorm / idea 恢复误删除的文档, react，vue，taro，MobX，hexo，前端技术分享，前端的坑 ">
+    <meta name="keywords" content="H5调微信扫一扫功能, react，vue，taro，MobX，hexo，前端技术分享，前端的坑 ">
     <meta name="description" content="yinol博客，记录前端路上爬的坑，专注技术分享">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>webstorm / idea 恢复误删除的文档 | yinol</title>
+    <title>H5调微信扫一扫功能 | yinol</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">webstorm / idea 恢复误删除的文档</h1>
+                    <h1 class="description center-align post-title">H5调微信扫一扫功能</h1>
                 </div>
             </div>
         </div>
@@ -387,12 +387,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/webstorm/">
-                                <span class="chip bg-color">webstorm</span>
+                            <a href="/tags/js/">
+                                <span class="chip bg-color">js</span>
                             </a>
                         
-                            <a href="/tags/idea/">
-                                <span class="chip bg-color">idea</span>
+                            <a href="/tags/ES6/">
+                                <span class="chip bg-color">ES6</span>
+                            </a>
+                        
+                            <a href="/tags/React/">
+                                <span class="chip bg-color">React</span>
                             </a>
                         
                     </div>
@@ -403,8 +407,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/webstorm/" class="post-category">
-                                webstorm
+                            <a href="/categories/js/" class="post-category">
+                                js
                             </a>
                         
                     </div>
@@ -416,7 +420,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-08
+                    2021-03-18
                 </div>
                 
 
@@ -437,11 +441,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="开发过程中，误删了文件，代码并没有提交svn-git，一脸懵逼-png"><a href="#开发过程中，误删了文件，代码并没有提交svn-git，一脸懵逼-png" class="headerlink" title="开发过程中，误删了文件，代码并没有提交svn/git，一脸懵逼.png"></a>开发过程中，误删了文件，代码并没有提交svn/git，一脸懵逼.png</h5><p> 找了几个文件恢复软件，可是js、css 代码恢复回来都是乱码，那些恢复大师并不是适合代码恢复，最后从IDE（webstorm）下手， 找到了解决的方法，特地整理记录一下。。。。。。</p>
-<h2 id="恢复操作"><a href="#恢复操作" class="headerlink" title="恢复操作"></a>恢复操作</h2><h3 id="查看最近文件改变"><a href="#查看最近文件改变" class="headerlink" title="查看最近文件改变"></a>查看最近文件改变</h3><p>选择 view —&gt; Recent Changes<br><img src="/images/restoreFile/1.png"></p>
-<h3 id="查找需要恢复的文件"><a href="#查找需要恢复的文件" class="headerlink" title="查找需要恢复的文件"></a>查找需要恢复的文件</h3><p>找这几分钟删除的文件（注：如果文件不是通过IDE删除，这里显示的就是External change）<br><img src="/images/restoreFile/2.png"></p>
-<h3 id="恢复文件"><a href="#恢复文件" class="headerlink" title="恢复文件"></a>恢复文件</h3><p>找到更改的文件，右键 —&gt;选择Revert Selection<br><img src="/images/restoreFile/3.png"></p>
-<h3 id="文件恢复路径"><a href="#文件恢复路径" class="headerlink" title="文件恢复路径"></a>文件恢复路径</h3><p>被删除的文件已经恢复到目录下<br><img src="/images/restoreFile/4.png"></p>
+                <p>移动端的h5项目调用微信扫一扫功能，可参考微信官方文档“微信开发文档—公众号”中，调用扫一扫接口后 测试，这个是必须在手机上测试的。</p>
+<h4 id="微信授权"><a href="#微信授权" class="headerlink" title="微信授权"></a>微信授权</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html">微信授权</a><br>（后端） 写一个接口给给前端，获取使用扫一扫功能的当前页url，  通过access_token获取jsapi_ticket,然后生成JS-SDK权限验证的签名</p>
+<p>后端返回一下参数</p>
+<pre class=" language-js"><code class="language-js">appId<span class="token punctuation">:</span> ‘公众号appid’<span class="token punctuation">,</span>     
+timestamp<span class="token punctuation">:</span> ‘ 时间戳 ’   
+nonceStr<span class="token punctuation">:</span> ‘ 生成签名的随机串 ’        
+signature <span class="token punctuation">:</span>‘签名’      
+</code></pre>
+<h4 id="调-“-扫一扫-“"><a href="#调-“-扫一扫-“" class="headerlink" title="调 “ 扫一扫 “"></a>调 “ 扫一扫 “</h4><p>前端拿到以上参数，调用wx.config</p>
+<pre class=" language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  debug<span class="token punctuation">:</span> wxConfig<span class="token punctuation">.</span>debug<span class="token punctuation">,</span>
+  appId<span class="token punctuation">:</span> wxConfig<span class="token punctuation">.</span>appId<span class="token punctuation">,</span>
+  timestamp<span class="token punctuation">:</span> wxConfig<span class="token punctuation">.</span>timestamp<span class="token punctuation">,</span>
+  nonceStr<span class="token punctuation">:</span> wxConfig<span class="token punctuation">.</span>nonceStr<span class="token punctuation">,</span>
+  signature<span class="token punctuation">:</span> wxConfig<span class="token punctuation">.</span>signature<span class="token punctuation">,</span>
+  jsApiList<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'scanQRCode'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wx<span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//通过ready接口处理成功验证</span>
+  wx<span class="token punctuation">.</span><span class="token function">scanQRCode</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    needResult<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 默认为0，扫描结果由微信处理，1则直接返回扫描结果，</span>
+    scanType<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"qrCode"</span><span class="token punctuation">,</span> <span class="token string">"barCode"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 可以指定扫二维码还是一维码，默认二者都有</span>
+    success<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token function"> </span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> result <span class="token operator">=</span> res<span class="token punctuation">.</span>resultStr<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 当needResult 为 1 时，扫码返回的结果</span>
+      result <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//处理返回的upcCode码</span>
+      Toast<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`扫码</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>result<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    error<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token function"> </span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Toast<span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wx<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Toast<span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span><span class="token string">'微信发生了错误!'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 
                 
             </div>
@@ -468,7 +502,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yinolblog.com/2021/02/08/restore-file/">http://yinolblog.com/2021/02/08/restore-file/</a>
+                    <a href="http://yinolblog.com/2021/03/18/scanWx/">http://yinolblog.com/2021/03/18/scanWx/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -506,12 +540,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/webstorm/">
-                                    <span class="chip bg-color">webstorm</span>
+                                <a href="/tags/js/">
+                                    <span class="chip bg-color">js</span>
                                 </a>
                             
-                                <a href="/tags/idea/">
-                                    <span class="chip bg-color">idea</span>
+                                <a href="/tags/ES6/">
+                                    <span class="chip bg-color">ES6</span>
+                                </a>
+                            
+                                <a href="/tags/React/">
+                                    <span class="chip bg-color">React</span>
                                 </a>
                             
                         </div>
@@ -555,17 +593,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/19/es6/">
+                <a href="/2021/03/18/scanWx/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="ES6 常用新特性">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="H5调微信扫一扫功能">
                         
-                        <span class="card-title">ES6 常用新特性</span>
+                        <span class="card-title">H5调微信扫一扫功能</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -575,15 +614,73 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ES6/" class="post-category">
-                                    ES6
+                            <a href="/categories/js/" class="post-category">
+                                    js
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                    <a href="/tags/ES6/">
+                        <span class="chip bg-color">ES6</span>
+                    </a>
+                    
+                    <a href="/tags/React/">
+                        <span class="chip bg-color">React</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/18/getUrlParams/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="获取URL查询参数转换成对象">
+                        
+                        <span class="card-title">获取URL查询参数转换成对象</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/js/" class="post-category">
+                                    js
                                 </a>
                             
                             
@@ -599,60 +696,6 @@
                     
                     <a href="/tags/ES6/">
                         <span class="chip bg-color">ES6</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/02/08/restore-file/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="webstorm / idea 恢复误删除的文档">
-                        
-                        <span class="card-title">webstorm / idea 恢复误删除的文档</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-08
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/webstorm/" class="post-category">
-                                    webstorm
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/webstorm/">
-                        <span class="chip bg-color">webstorm</span>
-                    </a>
-                    
-                    <a href="/tags/idea/">
-                        <span class="chip bg-color">idea</span>
                     </a>
                     
                 </div>
