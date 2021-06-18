@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="github + hexo 搭建个人博客, react，vue，taro，MobX，hexo，前端技术分享，前端的坑 ">
+    <meta name="keywords" content="js的Promise 详解, react，vue，taro，MobX，hexo，前端技术分享，前端的坑 ">
     <meta name="description" content="yinol博客，记录前端路上爬的坑，专注技术分享">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>github + hexo 搭建个人博客 | yinol</title>
+    <title>js的Promise 详解 | yinol</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">github + hexo 搭建个人博客</h1>
+                    <h1 class="description center-align post-title">js的Promise 详解</h1>
                 </div>
             </div>
         </div>
@@ -387,16 +387,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                                <span class="chip bg-color">博客</span>
+                            <a href="/tags/js/">
+                                <span class="chip bg-color">js</span>
                             </a>
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/ES6/">
+                                <span class="chip bg-color">ES6</span>
                             </a>
                         
-                            <a href="/tags/github/">
-                                <span class="chip bg-color">github</span>
+                            <a href="/tags/Promise/">
+                                <span class="chip bg-color">Promise</span>
                             </a>
                         
                     </div>
@@ -407,8 +407,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-category">
-                                博客搭建
+                            <a href="/categories/react/" class="post-category">
+                                react
                             </a>
                         
                     </div>
@@ -420,7 +420,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-20
+                    2021-06-18
                 </div>
                 
 
@@ -441,112 +441,151 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。<br>使用github pages服务搭建博客的好处有： </p>
+                <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Promise是异步编程的一种解决方案，可以替代传统的解决方案–回调函数和事件。ES6统一了用法，并原生提供了Promise对象。  </p>
+<p>Promise有一下两个特点： </p>
 <ul>
-<li>全是静态文件，访问速度快；</li>
-<li>免费方便，不需要服务器不需要后台；</li>
-<li>可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</li>
-<li>数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</li>
-<li>博客内容可以轻松打包、转移、发布到其它平台；</li>
+<li>对象的状态不受外界影响。 </li>
+<li>一旦状态改变了就不会在变，也就是说任何时候Promise都只有一种状态。   </li>
 </ul>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1、安装Git<br>2、安装Node.js<br>3、github账号   </p>
-<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>Git是目前世界上最先进的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。也就是用来管理你的hexo博客文章，上传到GitHub的工具。<br>windows：到<a target="_blank" rel="noopener" href="https://gitforwindows.org/">git官网</a>上下载。<br>linux：sudo apt-get install git<br>查看git版本</p>
-<pre class=" language-shell"><code class="language-shell">git --version
+<h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><p>1、对象的状态不受外界影响 （3种状态）</p>
+<ul>
+<li>Pending状态（进行中）</li>
+<li>Fulfilled状态（已成功）</li>
+<li>Rejected状态（已失败）</li>
+</ul>
+<p>2、一旦状态改变就不会再变 （两种状态改变：成功或失败）</p>
+<ul>
+<li>Pending -&gt; Fulfilled</li>
+<li>Pending -&gt; Rejected</li>
+</ul>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><h4 id="创建一个Promise-实例"><a href="#创建一个Promise-实例" class="headerlink" title="创建一个Promise 实例"></a>创建一个Promise 实例</h4><pre class=" language-jsx"><code class="language-jsx"><span class="token keyword">var</span> promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token comment" spellcheck="true">/*成功*/</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>Hexo是基于nodeJS编写的，所以需要安装一下nodeJs和里面的npm工具。<br>windows：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">nodejs官网</a>下载安装(选择LTS版本就行了)。<br>linux：</p>
-<pre class=" language-shell"><code class="language-shell">sudo apt-get install nodejs
-sudo apt-get install npm
+<p>Promise构造函数接收一个函数作为参数，该函数的两个参数是resolve，reject，它们由JavaScript引擎提供。</p>
+<p>resolve作用是将Promise对象状态由“未完成”变为“成功”，也就是Pending -&gt; Fulfilled，在异步操作成功时调用，并将异步操作的结果作为参数传递出去；而reject函数则是将Promise对象状态由“未完成”变为“失败”，也就是Pending -&gt; Rejected，在异步操作失败时调用，并将异步操作的结果作为参数传递出去。</p>
+<pre class=" language-jsx"><code class="language-jsx">
+<span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">var</span> greet <span class="token operator">=</span> <span class="token string">"hello  world"</span><span class="token punctuation">;</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span>greet<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//成功，把参数传递出去</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> promise<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>v<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//hello  world</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>查看版本</p>
-<pre class=" language-shell"><code class="language-shell">node -v
-npm -v
+<h4 id="Promise的then-方法"><a href="#Promise的then-方法" class="headerlink" title="Promise的then()方法"></a>Promise的then()方法</h4><p>Promise 实例具有then方法，也就是说，then方法是定义在原型对象Promise.prototype上的。它的作用是为 Promise 实例添加状态改变时的回调函数。前面说过，then方法的第一个参数是resolved状态的回调函数，第二个参数（可选）是rejected状态的回调函数。</p>
+<p>then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。因此可以采用链式写法，即then方法后面再调用另一个then方法。</p>
+<pre class=" language-jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">var</span> greet <span class="token operator">=</span> <span class="token string">"hello  world"</span><span class="token punctuation">;</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span>greet<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//成功，把参数传递出去</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> promise<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>v<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> v<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>v<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> v<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>v<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>官网： <a target="_blank" rel="noopener" href="http://hexo.io/">http://hexo.io</a><br>github: <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo">https://github.com/hexojs/hexo</a><br>安装hexo</p>
-<pre class=" language-shell"><code class="language-shell">// 安装hexo
-npm install -g hexo-cli
-//查看版本
-hexo -v
+<p><img src="/images/promise/1.png"></p>
+<h4 id="Promise的catch-方法"><a href="#Promise的catch-方法" class="headerlink" title="Promise的catch()方法"></a>Promise的catch()方法</h4><p>Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数。</p>
+<pre class=" language-jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token comment" spellcheck="true">/*成功*/</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">"发生错误"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> promise<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>v<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//成功</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"1111"</span><span class="token punctuation">,</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//1111 发生错误</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>初始化hexo</p>
-<pre class=" language-shell"><code class="language-shell">//在文件需要存放的目录下，执行初始化
-hexo init myblog
-//进入这个myblog文件夹
-cd myblog 
-// 安装所需依赖
-npm install
+<p><img src="/images/promise/2.png"></p>
+<h4 id="Promise的finally-方法"><a href="#Promise的finally-方法" class="headerlink" title="Promise的finally()方法"></a>Promise的finally()方法</h4><p>finally方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。该方法是 ES2018 引入标准的。</p>
+<pre class=" language-jsx"><code class="language-jsx">promise
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>result <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>···<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>error <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>···<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token keyword">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>···<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>hexo 常用命令行</p>
-<pre class=" language-shell"><code class="language-shell">hexo  g  //生成静态文件，文件生成public 目录中
-hexo  s  //开启本地预览服务，打开浏览器访问 http://localhost:4000
-hexo  d  //发布代码
-hexo new  文章名称  //创建文章
-hexo clean //清理
+<p>上面代码中，不管promise最后的状态，在执行完then或catch指定的回调函数以后，都会执行finally方法指定的回调函数。</p>
+<h4 id="Promise的all-方法"><a href="#Promise的all-方法" class="headerlink" title="Promise的all()方法"></a>Promise的all()方法</h4><p>Promise.all方法用于将多个 Promise 实例，包装成一个新的 Promise 实例。</p>
+<pre class=" language-jsx"><code class="language-jsx"><span class="token keyword">const</span> p <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><p>默认主题很丑，现在hexo官网上找个自己喜欢的主题进行替换。<a target="_blank" rel="noopener" href="https://hexo.io/themes/">官方主题</a>，本文已Matery主题为例<br>把下载的主题解压的整个文件夹放到根目录themes文件夹下<br><img src="/images/blog/1.png"><br><img src="/images/blog/2.png"><br>修改根目录下的_config.yml 中的theme: landscape改为theme: hexo-theme-matery-master（themes目录下主题的文件夹的文件夹名称），然后重新执行hexo g来重新生成。</p>
-<p>主题中的标签、分类、关于显示404，需要我们自己进行添加</p>
-<h4 id="添加标签页面"><a href="#添加标签页面" class="headerlink" title="添加标签页面"></a>添加标签页面</h4><pre class=" language-shell"><code class="language-shell">hexo new page tags //根目录下执行
+<p>上面代码中，Promise.all方法接受一个数组作为参数，p1、p2、p3都是 Promise 实例，如果不是，就会先调用下面讲到的Promise.resolve方法，将参数转为 Promise 实例，再进一步处理。（Promise.all方法的参数可以不是数组，但必须具有 Iterator 接口，且返回的每个成员都是 Promise 实例。</p>
+<p>p的状态由p1、p2、p3决定，分成两种情况。</p>
+<p>（1）只有p1、p2、p3的状态都变成fulfilled，p的状态才会变成fulfilled，此时p1、p2、p3的返回值组成一个数组，传递给p的回调函数。</p>
+<p>（2）只要p1、p2、p3之中有一个被rejected，p的状态就变成rejected，此时第一个被reject的实例的返回值，会传递给p的回调函数。</p>
+<pre class=" language-jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">p1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> promise1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"p1的第一条输出语句"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"p1的第二条输出语句"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"p1完成"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> promise1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">p2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> promise2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"p2的第一条输出语句"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"p2的第二条输出语句"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"p2完成"</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token keyword">return</span> promise2<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">p3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> promise3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span>reject<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"p3的第一条输出语句"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"p3的第二条输出语句"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"p3完成"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span>  promise3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">p1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">p2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">p3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>这个时候source 下面生成了一个tags文件夹，打开tags文件下的index.md 文件，设置文件的type，layout</p>
-<pre class=" language-shell"><code class="language-shell">title: yinol博客标签
-date: 2021-02-09 14:53:41
-type: "tags"
-layout: "tags"
+<p><img src="/images/promise/3.png"></p>
+<h4 id="Promise的race-方法"><a href="#Promise的race-方法" class="headerlink" title="Promise的race()方法"></a>Promise的race()方法</h4><p>Promise.race方法同样是将多个 Promise 实例，包装成一个新的 Promise 实例。</p>
+<pre class=" language-jsx"><code class="language-jsx"><span class="token keyword">const</span> p <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">race</span><span class="token punctuation">(</span><span class="token punctuation">[</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h4 id="添加分类页面"><a href="#添加分类页面" class="headerlink" title="添加分类页面"></a>添加分类页面</h4><pre class=" language-shell"><code class="language-shell">hexo new page categories //根目录下执行
+<p>上面代码中，只要p1、p2、p3之中有一个实例率先改变状态，p的状态就跟着改变。那个率先改变的 Promise 实例的返回值，就传递给p的回调函数。</p>
+<p>Promise.race方法的参数与Promise.all方法一样，如果不是 Promise 实例，就会先调用下面讲到的Promise.resolve方法，将参数转为 Promise 实例，再进一步处理。</p>
+<pre class=" language-jsx"><code class="language-jsx">Promise<span class="token punctuation">.</span><span class="token function">race</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">p1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">p2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">p3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>这个时候source 下面生成了一个categories文件夹，打开categories文件下的index.md 文件，设置文件的type，layout</p>
-<pre class=" language-shell"><code class="language-shell">title: yinol博客标签
-date: 2021-02-09 14:53:41
-type: "categories"
-layout: "categories"
+<p><img src="/images/promise/4.png"></p>
+<h4 id="Promise的race-方法-1"><a href="#Promise的race-方法-1" class="headerlink" title="Promise的race()方法"></a>Promise的race()方法</h4><pre class=" language-jsx"><code class="language-jsx"><span class="token keyword">const</span> jsPromise <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token string">'/whatever.json'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h3 id="添加关于页面"><a href="#添加关于页面" class="headerlink" title="添加关于页面"></a>添加关于页面</h3><p>以上述一样，<br> hexo new page about<br> 修改about文件下的index.md的type 和 layout<br> type: “about”<br> layout: “about”</p>
-<h3 id="GitHub创建个人仓库"><a href="#GitHub创建个人仓库" class="headerlink" title="GitHub创建个人仓库"></a>GitHub创建个人仓库</h3><p>先要有一个GitHub账户，如果没有就注册一个，<a target="_blank" rel="noopener" href="https://github.com/">github官网</a><br>创建一个仓库，推荐一篇写得很完善的博客，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43729943/article/details/103915046">前往</a></p>
-<h3 id="生成SSH添加到GitHub"><a href="#生成SSH添加到GitHub" class="headerlink" title="生成SSH添加到GitHub"></a>生成SSH添加到GitHub</h3><h4 id="本机生成SSH"><a href="#本机生成SSH" class="headerlink" title="本机生成SSH"></a>本机生成SSH</h4><p>回到git bash中, 也可以在cmd 中执行</p>
-<pre class=" language-shell"><code class="language-shell">git config --global user.name "yourname"
-git config --global user.email "youremail"
+<p>上面代码将 jQuery 生成的deferred对象，转为一个新的 Promise 对象。</p>
+<p>Promise.resolve等价于下面的写法。</p>
+<pre class=" language-jsx"><code class="language-jsx">Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 等价于</span>
+<span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span>resolve <span class="token operator">=</span><span class="token operator">></span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<p>这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱。这样GitHub才能知道你是不是对应它的账户。<br>检查一下用户名和邮箱   </p>
-<pre class=" language-shell"><code class="language-shell">git config user.name
-git config user.email
-</code></pre>
-<p>创建SSH</p>
-<pre class=" language-shell"><code class="language-shell">ssh-keygen -t rsa -C "youremail"
-</code></pre>
-<p>查看SSH 公钥<br>方法一：</p>
-<pre class=" language-shell"><code class="language-shell">cat ~/.ssh/id_rsa.pub
-</code></pre>
-<p>方法二：<br>打开id_rsa.pub直接查看<br><img src="/images/blog/3.png"></p>
-<h4 id="将SSH添加到github"><a href="#将SSH添加到github" class="headerlink" title="将SSH添加到github"></a>将SSH添加到github</h4><p>回到github中<br><img src="/images/blog/4.png"><br><img src="/images/blog/5.png"></p>
-<h3 id="将hexo部署到GitHub"><a href="#将hexo部署到GitHub" class="headerlink" title="将hexo部署到GitHub"></a>将hexo部署到GitHub</h3><p>将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml<br><font color=#FF0000 >注意 ‘ : ‘ 后面是两个空格</font></p>
-<pre class=" language-editorconfig"><code class="language-editorconfig">deploy:
-  type: git
-  repo: git@github.com:XXXXX.git
-  branch: master
-</code></pre>
-<p>branch 为分支，repo为git地址，如图：<br><img src="/images/blog/6.png"></p>
-<h4 id="安装发布插件"><a href="#安装发布插件" class="headerlink" title="安装发布插件"></a>安装发布插件</h4><pre class=" language-shell"><code class="language-shell">npm install hexo-deployer-git --save
-</code></pre>
-<h3 id="发布代码"><a href="#发布代码" class="headerlink" title="发布代码"></a>发布代码</h3><pre class=" language-shell"><code class="language-shell">hexo g //生成静态文件
-hexo d //发布代码，是把puclic 里面生成好的文件拷贝到.deploy_git 文件夹发布， 所以要先生成静态文件
-</code></pre>
-<h3 id="设置个人域名"><a href="#设置个人域名" class="headerlink" title="设置个人域名"></a>设置个人域名</h3><p>在windows的CMD窗口ping ‘github pages 的地址domain’ ，你就知道你的github pages的IP了<br><img src="/images/blog/7.png"><br>在DNS server中添加你的github pages的ip解析。不会的话直接点新手指导<br><img src="/images/blog/8.png"><br>在github 上配置域名指向，仓库setting，一直往下拉找到GitHub Pages ，进行配置<br><img src="/images/blog/9.png"><br><img src="/images/blog/10.png"></p>
-<h3 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h3><h4 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h4><p>打开命令行，创建文件，创建的文件在source/_posts 下</p>
-<pre class=" language-shell"><code class="language-shell">hexo new "标题名称"
-</code></pre>
-<h4 id="配置文章所属标签和分类"><a href="#配置文章所属标签和分类" class="headerlink" title="配置文章所属标签和分类"></a>配置文章所属标签和分类</h4><p>打开创建的文章，配置文章标签和分类，关键字之类的</p>
-<pre class=" language-shell"><code class="language-shell">---
-title: '标题名称'
-date: 2021-02-19 13:46:23
-categories: '分类'
-top: true // 为true,是推荐文章，在文章推荐模块可以看到
-password: SEO关键字（利于百度收录）
-tags:
-  - 标签1
-  - 标签2
----
-</code></pre>
-<p><font color=#FF0000 ></font><br><font color=#FF0000 >发布过程中容易出现的错误，请参考下一篇文章</font></p>
 
                 
             </div>
@@ -573,7 +612,7 @@ tags:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yinolblog.com/2021/02/20/blog/">http://yinolblog.com/2021/02/20/blog/</a>
+                    <a href="http://yinolblog.com/2021/06/18/promise/">http://yinolblog.com/2021/06/18/promise/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -611,16 +650,16 @@ tags:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%8D%9A%E5%AE%A2/">
-                                    <span class="chip bg-color">博客</span>
+                                <a href="/tags/js/">
+                                    <span class="chip bg-color">js</span>
                                 </a>
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
+                                <a href="/tags/ES6/">
+                                    <span class="chip bg-color">ES6</span>
                                 </a>
                             
-                                <a href="/tags/github/">
-                                    <span class="chip bg-color">github</span>
+                                <a href="/tags/Promise/">
+                                    <span class="chip bg-color">Promise</span>
                                 </a>
                             
                         </div>
@@ -664,17 +703,18 @@ tags:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/02/20/deepCopy/">
+                <a href="/2021/06/18/promise/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="数组、对象的深拷贝与浅拷贝">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="js的Promise 详解">
                         
-                        <span class="card-title">数组、对象的深拷贝与浅拷贝</span>
+                        <span class="card-title">js的Promise 详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -684,34 +724,35 @@ tags:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ES6/" class="post-category">
-                                    ES6
+                            <a href="/categories/react/" class="post-category">
+                                    react
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
                     
                     <a href="/tags/ES6/">
                         <span class="chip bg-color">ES6</span>
                     </a>
                     
-                    <a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
-                        <span class="chip bg-color">深拷贝</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D/">
-                        <span class="chip bg-color">浅拷贝</span>
+                    <a href="/tags/Promise/">
+                        <span class="chip bg-color">Promise</span>
                     </a>
                     
                 </div>
@@ -725,13 +766,13 @@ tags:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/20/card/">
+                <a href="/2021/04/30/canvas/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="js 身份证精确校验（支持15位和18位身份证号 ）">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="html2canvas实现网页截图下载功能">
                         
-                        <span class="card-title">js 身份证精确校验（支持15位和18位身份证号 ）</span>
+                        <span class="card-title">html2canvas实现网页截图下载功能</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -742,14 +783,14 @@ tags:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-30
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/js/" class="post-category">
-                                    js
+                            <a href="/categories/canvas/" class="post-category">
+                                    canvas
                                 </a>
                             
                             
@@ -759,8 +800,16 @@ tags:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/js/">
-                        <span class="chip bg-color">js</span>
+                    <a href="/tags/html2canvas/">
+                        <span class="chip bg-color">html2canvas</span>
+                    </a>
+                    
+                    <a href="/tags/canvas/">
+                        <span class="chip bg-color">canvas</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BD%91%E9%A1%B5%E6%88%AA%E5%9B%BE/">
+                        <span class="chip bg-color">网页截图</span>
                     </a>
                     
                 </div>
